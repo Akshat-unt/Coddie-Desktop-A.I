@@ -17,4 +17,4 @@ This is a desktop assistant which can answer to most of your queries.
 11: selenium
 
 
-<h3>Run the coodie.py file to see the required outcome.
+<h3>Run the coodie.py file to see the Desired outcome.
