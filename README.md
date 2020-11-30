@@ -1,20 +1,14 @@
-# Coddie-Desktop-A.I
-This is a desktop assistant which can answer to most of your queries.
+### What is a Virtual Assistant?👀
+>A virtual assistant, also called AI assistant or digital assistant, is an application program that understands natural language voice commands and completes tasks for the user.
 
-<h2>Pre-quesities needed:</h2>
- You need to install these modules via pip before running the script.
+# What is Coddie?
 
-1:  pyttsx3
-2:  speech_recognition
-3:  requests
-4:  subprocess
-5:  wolframalpha
-6:  pyautogui
-7:  smtplib
-8:  urllib
-9:  BeautifulSoup(bs4)
-10: googlesearch
-11: selenium
+> Coddie is a virtual Assistant made with Python. He has the ability to answer most of your queries.
 
+## Contributing
+Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.
 
-<h3>Run the coodie.py file to see the Desired outcome.
+Please make sure to update tests as appropriate.
+
+## License
+[MIT](https://choosealicense.com/licenses/mit/)
