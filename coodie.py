@@ -6,10 +6,10 @@ import subprocess
 import wikipedia  # pip install wikipedia
 import webbrowser
 import wolframalpha
+import platform 
 import os
 import pyautogui
 import smtplib
-from numpy.core._multiarray_umath import where
 
 engine = pyttsx3.init("sapi5")
 voices = engine.getProperty("voices")
@@ -17,16 +17,13 @@ voices = engine.getProperty("voices")
 # print(voices[1].id)
 engine.setProperty("voice", voices[0].id)
 
-
 # define speak fuction:
 def speak(audio):
     engine.say(audio)
     engine.runAndWait()
 
-
 # NOTICE:
 print("make sure you are connected to the internet!")
-
 
 # Define wishme function that uses present time to greet you
 def wishMe():
@@ -73,8 +70,6 @@ def sendEmail(to, content):
     server.sendmail("akshat.unt@gmail.com", to, content)
     server.close()
 
-question_word = who / which / what / when / where
-
 
 if __name__ == "__main__":
     wishMe()
@@ -91,81 +86,10 @@ if __name__ == "__main__":
             print(results)
             speak(results)
 
-        elif "play videos" in query:
-            video_dir = "C:\\Users\\Guest 2_2\\Videos"
-            video = os.listdir(video_dir)
-            speak("playing your videos")
-            print(video)
-            os.startfile(os.path.join(video_dir, video[0]))
+# ---------> LOGICAL & COMPUTATIONAL QUERIES <--------------------------------------------------------------
 
-        elif "open avm factory" in query:
-            speak("opening youtube")
-            webbrowser.open("https://www.youtube.com/channel/UCrUSrxPz80KKD675XBFemcA")
-
-        elif "open youtube" in query:
-            speak("opening youtube")
-            webbrowser.open("youtube.com")
-
-        elif "open google" in query:
-            speak("opening google")
-            webbrowser.open("google.com")
-
-        elif "open stackoverflow" in query:
-            speak("opening stackoverflow")
-            webbrowser.open("stackoverflow.com")
-
-        elif "play music" in query:
-            music_dir = "C:\\Users\\Guest 2_2\\Music\\Playlists"
-            songs = os.listdir(music_dir)
-            print(songs)
-            os.startfile(os.path.join(music_dir, songs[0]))
-
-        elif "the time" in query:
-            strTime = datetime.datetime.now().strftime("%H:%M:%S")
-            speak(f"Sir, the time is {strTime}")
-
-        elif "rediffmail" in query:
-            speak("opening rediff mail")
-            webbrowser.open("mail.rediff.com")
-
-        elif "open code" in query:
-            codePath = "C:\\Users\\Guest 2_2\\AppData\\Local\\Programs\\Microsoft VS Code\\Code.exe"
-            os.startfile(codePath)
-
-        elif "what is your name" in query:
-            speak("My name is Coodie")
-
-        elif "jyoti home kitchen" in query:
-            speak("opening youtube")
-            webbrowser.open("https://www.youtube.com/channel/UCC3H7SaDg-MWA6fJTONUk2g")
-
-        elif "who is your idol" in query:
-            speak("my idol is my manufacturer, i mean Akshat")
-
-        elif "hello" in query:
-            speak("hey there")
-            print("hi!")
-
-        elif "thank you" in query:
-            speak("welcome, Quitting sir!")
-            quit()
-
-        elif "email to akshat" in query:
-            try:
-                speak("What should I say?")
-                content = takeCommand()
-                to = "akshatkumarsingh5@gmail.com"
-                sendEmail(to, content)
-                speak("Email has been sent!")
-            except Exception as e:
-                print(e)
-                speak("Sorry my friend Akshat. I am not able to send this email")
-
-        elif "connect to class" in query:
-            speak("Connecting to zoom!")
-            meetpath = "G:\\Program files\\Python\\zoom\\zoom.py"
-            os.startfile(meetpath)
-            quit()
+        elif "Succeeder" in query:
+            numb = int(input("of which no:  \n")) 
 
         elif "hcf" in query:
             num1 = int(input("Enter the First number:\n"))
@@ -184,7 +108,6 @@ if __name__ == "__main__":
             print(f"The HCF of these two numbers is {hcf}")
             speak("The hcf of {num1} and {num2} is {hcf}")
 
-        elif 'search' in query:
             query = query.replace("search", "")
             webbrowser.open_new_tab(query)
             time.sleep(5)
@@ -260,7 +183,7 @@ if __name__ == "__main__":
             if __name__ == "__main__":
                 number = int(input("Enter the number:\n"))
                 print("Roman numeral is:", end=" ")
-                printRoman(number)
+                printRoman(number, "\n")
 
         elif 'lcm' in query:
             a = int(input("Enter first number:\n"))
@@ -277,35 +200,130 @@ if __name__ == "__main__":
             pyautogui.PAUSE = 6
             speak("the lcm of {a} and {b} is {maxNum}")
 
-        elif 'clear the clutter' in query:
-            speak("clearing the clutter")
-            main.py = "G:\\main.py"
-            os.startfile(main.py)
+# ---------> DAILY & REGULAR QUERIES <----------------------------------------------------------------------
 
-        elif 'how are you' in query:
-            print("I am fine sir!")
-            speak("i am fine sir")
+        elif 'subscribe jyoti home kitchen' in query:
+        	webbrowser.open("https://www.youtube.com/channel/UCC3H7SaDg-MWA6fJTONUk2g?sub_confirmation=1")
+
+        elif "play videos" in query:
+            video_dir = "C:\\Users\\Guest 2_2\\Videos"
+            video = os.listdir(video_dir)
+            speak("playing your videos")
+            print(video)
+            os.startfile(os.path.join(video_dir, video[0]))
+
+
+        elif "play music" in query:
+            music_dir = "C:\\Users\\Guest 2_2\\Music\\Playlists"
+            songs = os.listdir(music_dir)
+            print(songs)
+            os.startfile(os.path.join(music_dir, songs[0]))
+
+        elif "the time" in query:
+            strTime = datetime.datetime.now().strftime("%H:%M:%S")
+            speak(f"Sir, the time is {strTime}")
+
+        elif "hello" in query:
+            speak("hey there")
+            print("hi!")
+
+        elif "thank you" in query:
+            speak("welcome, Quitting sir!")
+            quit()
+
+        elif "email to akshat" in query:
+            try:
+                speak("What should I say?")
+                content = takeCommand()
+                to = "akshatkumarsingh5@gmail.com"
+                sendEmail(to, content)
+                speak("Email has been sent!")
+            except Exception as e:
+                print(e)
+                speak("Sorry my friend Akshat. I am not able to send this email")
+
+        elif "connect to class" in query:
+            speak("Connecting to zoom!")
+            meetpath = "G:\\Program files\\Python\\zoom\\zoom.py"
+            os.startfile(meetpath)
+            quit()            
+
+# ---------> OPEN APPS OR RUN PROGRAMS <--------------------------------------------------------------------
+        elif "open avm factory" in query:
+            speak("opening youtube")
+            webbrowser.open("https://www.youtube.com/channel/UCrUSrxPz80KKD675XBFemcA")
+
+        elif "open youtube" in query:
+            speak("opening youtube")
+            webbrowser.open("youtube.com")
+
+        elif "open google" in query:
+            speak("opening google")
+            webbrowser.open("google.com")
+
+        elif "open stackoverflow" in query:
+            speak("opening stackoverflow")
+            webbrowser.open("stackoverflow.com")
+
+        elif "rediffmail" in query:
+            speak("opening rediff mail")
+            webbrowser.open("mail.rediff.com")
+
+        elif "open code" in query:
+            codePath = "C:\\Users\\Guest 2_2\\AppData\\Local\\Programs\\Microsoft VS Code\\Code.exe"
+            os.startfile(codePath)
+
+        elif "jyoti home kitchen" in query:
+            speak("opening youtube")
+            webbrowser.open("https://www.youtube.com/channel/UCC3H7SaDg-MWA6fJTONUk2g")
+
+        elif 'open task manager' in query:
+            print("opening task manager")
+            pyautogui.keyDown("ctrl")
+            pyautogui.keyDown("shift")
+            pyautogui.keyDown("esc")
+            pyautogui.keyUp("ctrl")
+            pyautogui.keyUp("esc")
+            pyautogui.keyUp("shift")  
 
         elif 'open workspace' in query:
             speak("opening folder")
             path_to_folder = "G:\\Program files"
             os.startfile(path_to_folder)
 
-        elif question_word in query:
+        elif 'minimize all' in query:
+            pyautogui.keyDown('win')
+            pyautogui.press('m')
+            pyautogui.keyUp('win')
+
+        elif 'make a note' in query:
+        	os.startfile("C:\\ProgramData\\Microsoft\\Windows\\Start Menu\\Programs\\Accessories\\Notepad.lnk")
+        	pyautogui.PAUSE = 5
+        	pyautogui.write(query)                      
+
+        elif 'clear the clutter' in query:
+            speak("clearing the clutter")
+            main.py = "G:\\main.py"
+            os.startfile(main.py)            
+# ---------> PROBLEMS BASED ON QUESTION WORDS <-------------------------------------------------------------
+
+        elif "what is your name" in query:
+            speak("My name is Coodie")
+
+        elif 'coodie' in query:
+        	speak("yes sir")
+
+        elif "who is your idol" in query:
+            speak("my idol is my manufacturer, i mean Akshat")
+
+        elif 'how are you' in query:
+            print("I am fine sir!")
+            speak("i am fine sir")
+
+
+        elif 'what' in query or 'which' in query or 'when' in query or 'how' in query:
             print("searching web...")
             speak("searching web")
-            query = query.replace("search", "")
-            webbrowser.open_new_tab(query)
-            time.sleep(5)
-
-        elif question_word in query:
-            print("searching web...")
-            query = query.replace("search", "")
-            webbrowser.open_new_tab(query)
-            time.sleep(5)
-
-        elif question_word in query:
-            print("searching web...")
             query = query.replace("search", "")
             webbrowser.open_new_tab(query)
             time.sleep(5)
@@ -313,12 +331,7 @@ if __name__ == "__main__":
         elif 'what language' in query:
             print("i can speak english")
 
-        elif 'minimize all' in query:
-            pyautogui.keyDown('win')
-            pyautogui.press('m')
-            pyautogui.keyUp('win')
-
-        elif 'full form of unt' in query:
+        elif 'full form of u n t' in query:
         	print("can't tell you right now!")
 
         elif 'ashish phone number' in query:
@@ -333,21 +346,20 @@ if __name__ == "__main__":
         elif 'bike number' in query:
         	print("UP65BY3757")
 
+        elif 'happy birthday' in query:
+        	print("HAPPY BIRTHDAY!! :)")
+        	speak("happy birthday")
+
+        elif 'can you do my homework' in query:
+        	speak("no, but i can help you with your topics")
+
         elif 'favourite colour' in query:
         	speak("my favourite colour is orange")
         	print("my favourite colour is orange!")
 
-        elif 'open task manager' in query:
-            print("opening task manager")
-            pyautogui.keyDown("ctrl")
-            pyautogui.keyDown("shift")
-            pyautogui.keyDown("esc")
-            pyautogui.keyUp("ctrl")
-            pyautogui.keyUp("esc")
-            pyautogui.keyUp("shift")
-
         elif 'your age' in query:
         	speak("my first version was released on 14 october two thousand twenty")
+# --------------------> TURN OFF THE PC <-----------------------------------------------------------
 
         elif "log off" in query or "sign out" in query:
             speak("Ok , your pc will log off in 10 sec make sure you exit from all applications")
