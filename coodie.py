@@ -331,20 +331,10 @@ if __name__ == "__main__":
         elif 'what language' in query:
             print("i can speak english")
 
-        elif 'full form of u n t' in query:
-        	print("can't tell you right now!")
 
-        elif 'ashish phone number' in query:
-        	print("9670733000")
 
-        elif 'priti phone number' in query:
-        	print("9648000025")
 
-        elif 'car number' in query:
-        	print("UP65DT8505")
 
-        elif 'bike number' in query:
-        	print("UP65BY3757")
 
         elif 'happy birthday' in query:
         	print("HAPPY BIRTHDAY!! :)")
