@@ -1,4 +1,4 @@
-# Pre installed Modules
+# -------------------------->Pre installed Modules<--------------------
 import datetime
 import subprocess
 import webbrowser
@@ -227,6 +227,11 @@ if __name__ == "__main__":
             print(f"The LCM of {a} and {b} is {maxNum}")
             pyautogui.PAUSE = 6
             speak("the lcm of {a} and {b} is {maxNum}")
+            
+        elif "gmail" in query:
+            webbrowser.open(
+                "https://gmail.com"
+            )
 
         # ---------> DAILY & REGULAR QUERIES <----------------------------------------------------------------------
 
