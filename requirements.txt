@@ -1,7 +1,7 @@
-pyttsx3  
+pyttsx3
 SpeechRecognition
 pyautogui  
-wikipedia  
+wikipedia
 wolframalpha
 requests
-smtplib
+secure-smtplib
