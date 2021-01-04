@@ -1,15 +1,23 @@
+# Pre installed Modules
+import datetime
+import subprocess
+import webbrowser
+import platform
+import os
+
+# <---------------------------------------------->
+
+# Modules to be installed manualy
+
 import pyttsx3  # pip install pyttsx3
 import speech_recognition as sr  # pip install speechRecognition
-import datetime
-import requests
-import subprocess
+import pyautogui  # pip install pyautogui
 import wikipedia  # pip install wikipedia
-import webbrowser
 import wolframalpha
-import platform 
-import os
-import pyautogui
+import requests
 import smtplib
+
+# <--------------------------------------------->
 
 engine = pyttsx3.init("sapi5")
 voices = engine.getProperty("voices")
@@ -21,6 +29,7 @@ engine.setProperty("voice", voices[0].id)
 def speak(audio):
     engine.say(audio)
     engine.runAndWait()
+
 
 # NOTICE:
 print("make sure you are connected to the internet!")
@@ -38,7 +47,6 @@ def wishMe():
         speak("Good Evening!")
 
     speak("I am coodie Sir. Please tell me how may I help you")
-
 
 
 def takeCommand():
@@ -66,8 +74,8 @@ def sendEmail(to, content):
     server = smtplib.SMTP("smtp.gmail.com", 587)
     server.ehlo()
     server.starttls()
-    server.login("akshat.unt@gmail.com", "yes@akshat")
-    server.sendmail("akshat.unt@gmail.com", to, content)
+    server.login("email_id", "password")
+    server.sendmail("email_id", to, content)
     server.close()
 
 
@@ -86,10 +94,12 @@ if __name__ == "__main__":
             print(results)
             speak(results)
 
-# ---------> LOGICAL & COMPUTATIONAL QUERIES <--------------------------------------------------------------
+        # ---------> LOGICAL & COMPUTATIONAL QUERIES <--------------------------------------------------------------
 
         elif "Succeeder" in query:
-            numb = int(input("of which no:  \n")) 
+            numb = int(input("of which no:  \n"))
+            succeeder = numb + 1
+            print(succeeder)
 
         elif "hcf" in query:
             num1 = int(input("Enter the First number:\n"))
@@ -126,48 +136,67 @@ if __name__ == "__main__":
                 current_humidiy = y["humidity"]
                 z = x["weather"]
                 weather_description = z[0]["description"]
-                speak(" Temperature in kelvin unit is " +
-                      str(current_temperature) +
-                      "\n humidity in percentage is " +
-                      str(current_humidiy) +
-                      "\n description  " +
-                      str(weather_description))
-                print(" Temperature in kelvin unit = " +
-                      str(current_temperature) +
-                      "\n humidity (in percentage) = " +
-                      str(current_humidiy) +
-                      "\n description = " +
-                      str(weather_description))
+                speak(
+                    " Temperature in kelvin unit is "
+                    + str(current_temperature)
+                    + "\n humidity in percentage is "
+                    + str(current_humidiy)
+                    + "\n description  "
+                    + str(weather_description)
+                )
+                print(
+                    " Temperature in kelvin unit = "
+                    + str(current_temperature)
+                    + "\n humidity (in percentage) = "
+                    + str(current_humidiy)
+                    + "\n description = "
+                    + str(weather_description)
+                )
 
         elif "calculate" in query:
 
             speak("calculating")
-            # write your wolframalpha app_id here 
+            # write your wolframalpha app_id here
             app_id = "9U75J8-KGK7EKP3YT"
             client = wolframalpha.Client(app_id)
 
-            indx = query.lower().split().index('calculate')
-            getinput = query.split()[indx + 1:]
-            res = client.query(' '.join(getinput))
+            indx = query.lower().split().index("calculate")
+            getinput = query.split()[indx + 1 :]
+            res = client.query(" ".join(getinput))
             answer = next(res.results).text
             speak("The answer is " + answer)
 
-        elif 'ask' in query:
-            speak('I can answer to computational and geographical questions  and what question do you want to ask now')
+        elif "ask" in query:
+            speak(
+                "I can answer to computational and geographical questions  and what question do you want to ask now"
+            )
             question = takeCommand()
             app_id = "9U75J8-KGK7EKP3YT"
-            client = wolframalpha.Client('R2K75H-7ELALHR35X')
+            client = wolframalpha.Client("R2K75H-7ELALHR35X")
             res = client.query(question)
             answer = next(res.results).text
             speak(answer)
             print(answer)
 
         elif "roman number" in query:
+
             def printRoman(number):
-                num = [1, 4, 5, 9, 10, 40, 50, 90,
-                       100, 400, 500, 900, 1000]
-                sym = ["I", "IV", "V", "IX", "X", "XL",
-                       "L", "XC", "C", "CD", "D", "CM", "M"]
+                num = [1, 4, 5, 9, 10, 40, 50, 90, 100, 400, 500, 900, 1000]
+                sym = [
+                    "I",
+                    "IV",
+                    "V",
+                    "IX",
+                    "X",
+                    "XL",
+                    "L",
+                    "XC",
+                    "C",
+                    "CD",
+                    "D",
+                    "CM",
+                    "M",
+                ]
                 i = 12
                 while number:
                     div = number // num[i]
@@ -178,21 +207,20 @@ if __name__ == "__main__":
                         div -= 1
                     i -= 1
 
-
-            # Driver code 
+            # Driver code
             if __name__ == "__main__":
                 number = int(input("Enter the number:\n"))
                 print("Roman numeral is:", end=" ")
                 printRoman(number, "\n")
 
-        elif 'lcm' in query:
+        elif "lcm" in query:
             a = int(input("Enter first number:\n"))
             b = int(input("Enter second number:\n"))
 
             maxNum = max(a, b)
 
-            while (True):
-                if (maxNum % a == 0 and maxNum % b == 0):
+            while True:
+                if maxNum % a == 0 and maxNum % b == 0:
                     break
                 maxNum = maxNum + 1
 
@@ -200,10 +228,12 @@ if __name__ == "__main__":
             pyautogui.PAUSE = 6
             speak("the lcm of {a} and {b} is {maxNum}")
 
-# ---------> DAILY & REGULAR QUERIES <----------------------------------------------------------------------
+        # ---------> DAILY & REGULAR QUERIES <----------------------------------------------------------------------
 
-        elif 'subscribe jyoti home kitchen' in query:
-        	webbrowser.open("https://www.youtube.com/channel/UCC3H7SaDg-MWA6fJTONUk2g?sub_confirmation=1")
+        elif "subscribe jyoti home kitchen" in query:
+            webbrowser.open(
+                "https://www.youtube.com/channel/UCC3H7SaDg-MWA6fJTONUk2g?sub_confirmation=1"
+            )
 
         elif "play videos" in query:
             video_dir = "C:\\Users\\Guest 2_2\\Videos"
@@ -211,7 +241,6 @@ if __name__ == "__main__":
             speak("playing your videos")
             print(video)
             os.startfile(os.path.join(video_dir, video[0]))
-
 
         elif "play music" in query:
             music_dir = "C:\\Users\\Guest 2_2\\Music\\Playlists"
@@ -246,9 +275,9 @@ if __name__ == "__main__":
             speak("Connecting to zoom!")
             meetpath = "G:\\Program files\\Python\\zoom\\zoom.py"
             os.startfile(meetpath)
-            quit()            
+            quit()
 
-# ---------> OPEN APPS OR RUN PROGRAMS <--------------------------------------------------------------------
+        # ---------> OPEN APPS OR RUN PROGRAMS <--------------------------------------------------------------------
         elif "open avm factory" in query:
             speak("opening youtube")
             webbrowser.open("https://www.youtube.com/channel/UCrUSrxPz80KKD675XBFemcA")
@@ -277,82 +306,81 @@ if __name__ == "__main__":
             speak("opening youtube")
             webbrowser.open("https://www.youtube.com/channel/UCC3H7SaDg-MWA6fJTONUk2g")
 
-        elif 'open task manager' in query:
+        elif "open task manager" in query:
             print("opening task manager")
             pyautogui.keyDown("ctrl")
             pyautogui.keyDown("shift")
             pyautogui.keyDown("esc")
             pyautogui.keyUp("ctrl")
             pyautogui.keyUp("esc")
-            pyautogui.keyUp("shift")  
+            pyautogui.keyUp("shift")
 
-        elif 'open workspace' in query:
+        elif "open workspace" in query:
             speak("opening folder")
             path_to_folder = "G:\\Program files"
             os.startfile(path_to_folder)
 
-        elif 'minimize all' in query:
-            pyautogui.keyDown('win')
-            pyautogui.press('m')
-            pyautogui.keyUp('win')
+        elif "minimise all" in query or "minimize all" in query:
+            pyautogui.keyDown("win")
+            pyautogui.press("m")
+            pyautogui.keyUp("win")
 
-        elif 'make a note' in query:
-        	os.startfile("C:\\ProgramData\\Microsoft\\Windows\\Start Menu\\Programs\\Accessories\\Notepad.lnk")
-        	pyautogui.PAUSE = 5
-        	pyautogui.write(query)                      
+        elif "make a note" in query:
+            os.startfile(
+                "C:\\ProgramData\\Microsoft\\Windows\\Start Menu\\Programs\\Accessories\\Notepad.lnk"
+            )
+            pyautogui.PAUSE = 5
+            pyautogui.write(query)
 
-        elif 'clear the clutter' in query:
+        elif "clear the clutter" in query:
             speak("clearing the clutter")
             main.py = "G:\\main.py"
-            os.startfile(main.py)            
-# ---------> PROBLEMS BASED ON QUESTION WORDS <-------------------------------------------------------------
+            os.startfile(main.py)
+        # ---------> PROBLEMS BASED ON QUESTION WORDS <-------------------------------------------------------------
 
         elif "what is your name" in query:
             speak("My name is Coodie")
 
-        elif 'coodie' in query:
-        	speak("yes sir")
+        elif "coodie" in query:
+            speak("yes sir")
 
         elif "who is your idol" in query:
             speak("my idol is my manufacturer, i mean Akshat")
 
-        elif 'how are you' in query:
+        elif "how are you" in query:
             print("I am fine sir!")
             speak("i am fine sir")
 
-
-        elif 'what' in query or 'which' in query or 'when' in query or 'how' in query:
+        elif "what" in query or "which" in query or "when" in query or "how" in query:
             print("searching web...")
             speak("searching web")
             query = query.replace("search", "")
             webbrowser.open_new_tab(query)
             time.sleep(5)
 
-        elif 'what language' in query:
+        elif "what language" in query:
             print("i can speak english")
 
+        elif "happy birthday" in query:
+            print("HAPPY BIRTHDAY!! :)")
+            speak("happy birthday")
 
+        elif "can you do my homework" in query:
+            speak("no, but i can help you with your topics")
 
+        elif "favourite colour" in query:
+            speak("my favourite colour is orange")
+            print("my favourite colour is orange!")
 
+        elif "your age" in query:
+            speak("my first version was released on 14 october two thousand twenty")
 
-
-        elif 'happy birthday' in query:
-        	print("HAPPY BIRTHDAY!! :)")
-        	speak("happy birthday")
-
-        elif 'can you do my homework' in query:
-        	speak("no, but i can help you with your topics")
-
-        elif 'favourite colour' in query:
-        	speak("my favourite colour is orange")
-        	print("my favourite colour is orange!")
-
-        elif 'your age' in query:
-        	speak("my first version was released on 14 october two thousand twenty")
-# --------------------> TURN OFF THE PC <-----------------------------------------------------------
+        # --------------------> TURN OFF THE PC <-----------------------------------------------------------
 
         elif "log off" in query or "sign out" in query:
-            speak("Ok , your pc will log off in 10 sec make sure you exit from all applications")
+            speak(
+                "Ok , your pc will log off in 10 sec make sure you exit from all applications"
+            )
             subprocess.call(["shutdown", "/l"])
 
 time.sleep(3)
