@@ -3,8 +3,7 @@ import datetime
 import subprocess
 import webbrowser
 import platform
-import os
-
+import os # importing Operating system
 # <---------------------------------------------->
 
 # Modules to be installed manualy
@@ -257,7 +256,7 @@ if __name__ == "__main__":
             strTime = datetime.datetime.now().strftime("%H:%M:%S")
             speak(f"Sir, the time is {strTime}")
 
-        elif "hello" in query:
+        elif "hello" in query or "hi" in query:
             speak("hey there")
             print("hi!")
 
