@@ -5,6 +5,9 @@
 
 > Coddie is a virtual Assistant made with Python. He has the ability to answer most of your queries.
 
+# Preview (of assistant):
+![preview](https://github.com/Akshat-unt/Coddie-Desktop-A.I/blob/master/GUI/Assistant.gif)
+
 ## Contributing
 Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.
 
