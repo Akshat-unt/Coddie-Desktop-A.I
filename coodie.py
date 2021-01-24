@@ -240,14 +240,14 @@ if __name__ == "__main__":
             )
 
         elif "play videos" in query:
-            video_dir = "C:\\Users\\Guest 2_2\\Videos"
+            video_dir = "C:\\Users\\Guest 2_2\\Videos" #Add your username 
             video = os.listdir(video_dir)
             speak("playing your videos")
             print(video)
             os.startfile(os.path.join(video_dir, video[0]))
 
         elif "play music" in query:
-            music_dir = "C:\\Users\\Guest 2_2\\Music\\Playlists"
+            music_dir = "C:\\Users\\Guest 2_2\\Music\\Playlists"  #Add your Username 
             songs = os.listdir(music_dir)
             print(songs)
             os.startfile(os.path.join(music_dir, songs[0]))
