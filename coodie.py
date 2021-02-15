@@ -99,6 +99,12 @@ if __name__ == "__main__":
             numb = int(input("of which no:  \n"))
             succeeder = numb + 1
             print(succeeder)
+            
+        elif "predecessor" in query:
+            number = int(input("of which number? : \n"))
+            predecessor = number - 1
+            print(predecessor)
+            speak(predecessor ,"is the predecessor of", number)
 
         elif "hcf" in query:
             num1 = int(input("Enter the First number:\n"))
