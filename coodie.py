@@ -244,6 +244,10 @@ if __name__ == "__main__":
             webbrowser.open(
                 "https://www.youtube.com/channel/UCC3H7SaDg-MWA6fJTONUk2g?sub_confirmation=1"
             )
+            
+        elif "go to my website" in query or "open my website" in query:
+            webbrowser.open("https://Akshat-unt.github.io")
+            speak("opening")
 
         elif "play videos" in query:
             video_dir = "C:\\Users\\Guest 2_2\\Videos" #Add your username 
@@ -384,6 +388,9 @@ if __name__ == "__main__":
 
         elif "your age" in query:
             speak("my first version was released on 14 october two thousand twenty")
+            
+        elif "open my browser" in query:
+            webbrowser.open("https://github.com/Akshat-unt/PyBro--WebBrowser")
 
         # --------------------> TURN OFF THE PC <-----------------------------------------------------------
 
