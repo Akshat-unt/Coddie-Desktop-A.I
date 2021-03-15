@@ -1,3 +1,5 @@
+[![GitHub forks](https://img.shields.io/github/forks/Akshat-unt/Coddie-Desktop-A.I?style=for-the-badge)](https://github.com/Akshat-unt/Coddie-Desktop-A.I/network) [![GitHub license](https://img.shields.io/github/license/Akshat-unt/Coddie-Desktop-A.I?style=for-the-badge)](https://github.com/Akshat-unt/Coddie-Desktop-A.I/blob/master/LICENSE)
+
 ### What is a Virtual Assistant?👀
 >A virtual assistant, also called AI assistant or digital assistant, is an application program that understands natural language voice commands and completes tasks for the user.
 
