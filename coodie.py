@@ -1,9 +1,12 @@
-# -------------------------->Pre installed Modules<--------------------
+# Pre installed Modules
 import datetime
 import subprocess
 import webbrowser
 import platform
-import os # importing Operating system
+import time
+import os
+from playsound import playsound
+
 # <---------------------------------------------->
 
 # Modules to be installed manualy
@@ -14,6 +17,8 @@ import pyautogui  # pip install pyautogui
 import wikipedia  # pip install wikipedia
 import wolframalpha
 import requests
+import pyjokes
+import pywhatkit
 import smtplib
 
 # <--------------------------------------------->
@@ -29,6 +34,27 @@ def speak(audio):
     engine.say(audio)
     engine.runAndWait()
 
+# <----------------------------------------->
+
+user = str(input("Please let me know if you are Akshat for Admin access! Yes/No: "))
+def user_authorisation():
+    user.lower()
+    if user == "yes":
+        auth_key = "*@&^"
+        speak("Enter your authorisation key")
+        key = str(input("Enter your AUTHORISATION KEY: "))
+        if key == auth_key:
+            pass
+        else:
+            speak("found vulnerabilities")
+            speak("incorrect pin, breaking the code flow, initialising syren, deleting credentials, sending SMS to author, initialising system lock")
+            playsound("G:\\Program files\\Python\\ORGANIZED\\alarm\\alarm_dubstep.mp3")
+            pyautogui.keyDown("win")
+            pyautogui.press("l")
+            pyautogui.keyUp("win")
+    else:
+        pass
+user_authorisation()
 
 # NOTICE:
 print("make sure you are connected to the internet!")
@@ -73,8 +99,8 @@ def sendEmail(to, content):
     server = smtplib.SMTP("smtp.gmail.com", 587)
     server.ehlo()
     server.starttls()
-    server.login("email_id", "password")
-    server.sendmail("email_id", to, content)
+    server.login("senders@mail.com", "password")
+    server.sendmail("senders@email.com", to, content)
     server.close()
 
 
@@ -99,12 +125,6 @@ if __name__ == "__main__":
             numb = int(input("of which no:  \n"))
             succeeder = numb + 1
             print(succeeder)
-            
-        elif "predecessor" in query:
-            number = int(input("of which number? : \n"))
-            predecessor = number - 1
-            print(predecessor)
-            speak(predecessor ,"is the predecessor of", number)
 
         elif "hcf" in query:
             num1 = int(input("Enter the First number:\n"))
@@ -232,11 +252,6 @@ if __name__ == "__main__":
             print(f"The LCM of {a} and {b} is {maxNum}")
             pyautogui.PAUSE = 6
             speak("the lcm of {a} and {b} is {maxNum}")
-            
-        elif "gmail" in query:
-            webbrowser.open(
-                "https://gmail.com"
-            )
 
         # ---------> DAILY & REGULAR QUERIES <----------------------------------------------------------------------
 
@@ -244,20 +259,19 @@ if __name__ == "__main__":
             webbrowser.open(
                 "https://www.youtube.com/channel/UCC3H7SaDg-MWA6fJTONUk2g?sub_confirmation=1"
             )
-            
-        elif "go to my website" in query or "open my website" in query:
-            webbrowser.open("https://Akshat-unt.github.io")
-            speak("opening")
+
+        elif 'joke' in query:
+            speak(pyjokes.get_joke())
 
         elif "play videos" in query:
-            video_dir = "C:\\Users\\Guest 2_2\\Videos" #Add your username 
+            video_dir = "C:\\Users\\Akshat\\Videos"
             video = os.listdir(video_dir)
             speak("playing your videos")
             print(video)
             os.startfile(os.path.join(video_dir, video[0]))
 
         elif "play music" in query:
-            music_dir = "C:\\Users\\Guest 2_2\\Music\\Playlists"  #Add your Username 
+            music_dir = "C:\\Users\\Akshat\\Music\\Playlists"
             songs = os.listdir(music_dir)
             print(songs)
             os.startfile(os.path.join(music_dir, songs[0]))
@@ -266,7 +280,7 @@ if __name__ == "__main__":
             strTime = datetime.datetime.now().strftime("%H:%M:%S")
             speak(f"Sir, the time is {strTime}")
 
-        elif "hello" in query or "hi" in query:
+        elif "hello" in query:
             speak("hey there")
             print("hi!")
 
@@ -278,7 +292,7 @@ if __name__ == "__main__":
             try:
                 speak("What should I say?")
                 content = takeCommand()
-                to = "akshatkumarsingh5@gmail.com"
+                to = "recievers@email.com"
                 sendEmail(to, content)
                 speak("Email has been sent!")
             except Exception as e:
@@ -295,6 +309,10 @@ if __name__ == "__main__":
         elif "open avm factory" in query:
             speak("opening youtube")
             webbrowser.open("https://www.youtube.com/channel/UCrUSrxPz80KKD675XBFemcA")
+
+        elif "open my website" in query:
+            print("opening website")
+            webbrowser.open("akshat-unt.github.io")
 
         elif "open youtube" in query:
             speak("opening youtube")
@@ -313,12 +331,14 @@ if __name__ == "__main__":
             webbrowser.open("mail.rediff.com")
 
         elif "open code" in query:
-            codePath = "C:\\Users\\Guest 2_2\\AppData\\Local\\Programs\\Microsoft VS Code\\Code.exe"
+            codePath = "C:\\Users\\Akshat\\AppData\\Local\\Programs\\Microsoft VS Code\\Code.exe"
             os.startfile(codePath)
 
-        elif "jyoti home kitchen" in query:
-            speak("opening youtube")
-            webbrowser.open("https://www.youtube.com/channel/UCC3H7SaDg-MWA6fJTONUk2g")
+        elif "open clipboard" in query or "show clipboard" in query:
+            print("opening clipboard")
+            pyautogui.keyDown("win")
+            pyautogui.press("v")
+            pyautogui.keyUp("win")
 
         elif "open task manager" in query:
             print("opening task manager")
@@ -348,8 +368,13 @@ if __name__ == "__main__":
 
         elif "clear the clutter" in query:
             speak("clearing the clutter")
-            main.py = "G:\\main.py"
-            os.startfile(main.py)
+            file = "G:\\main.py"
+            os.startfile(file)
+
+        if 'play' in query:
+            song = query.replace('play', '')
+            speak('playing ' + song)
+            pywhatkit.playonyt(song)
         # ---------> PROBLEMS BASED ON QUESTION WORDS <-------------------------------------------------------------
 
         elif "what is your name" in query:
@@ -370,7 +395,7 @@ if __name__ == "__main__":
             speak("searching web")
             query = query.replace("search", "")
             webbrowser.open_new_tab(query)
-            time.sleep(5)
+            time.sleep(6)
 
         elif "what language" in query:
             print("i can speak english")
@@ -388,9 +413,26 @@ if __name__ == "__main__":
 
         elif "your age" in query:
             speak("my first version was released on 14 october two thousand twenty")
-            
-        elif "open my browser" in query:
-            webbrowser.open("https://github.com/Akshat-unt/PyBro--WebBrowser")
+
+        # ---------------------->Personal Queries<-----------------------------------------------------------
+        elif "address" in query:
+            H_address = "your address"
+            print(H_address)
+
+        elif "full form of u n t" in query:
+            print("can't tell you right now!")
+
+        elif 'are you single' in query:
+            speak('I am in a relationship with wifi')
+
+        elif (
+            "find my phone" in query
+            or "locate my phone" in query
+            or "where is my phone" in query
+        ):
+            print("searching web...")
+            speak("searching web")
+            webbrowser.open("https://myaccount.google.com/find-your-phone?pli=1")
 
         # --------------------> TURN OFF THE PC <-----------------------------------------------------------
 
