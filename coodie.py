@@ -309,15 +309,15 @@ if __name__ == "__main__":
         elif "open avm factory" in query:
             speak("opening youtube")
             webbrowser.open("https://www.youtube.com/channel/UCrUSrxPz80KKD675XBFemcA")
-
+                      
         elif "open my website" in query:
             print("opening website")
             webbrowser.open("akshat-unt.github.io")
             
-        elif 'netflix' in statement:
+        elif 'netflix' in query:
             url = "https://www.netflix.com/"
             stopwords = ['in', 'open', 'search','netflix']
-            querywords = statement.split()
+            querywords = query.split()
 
             resultwords = [word for word in querywords if word.lower() not in stopwords]
             result = ' '.join(resultwords)
@@ -332,10 +332,10 @@ if __name__ == "__main__":
                  speak("Netflix is open now")
                  time.sleep(5)
         
-        elif 'youtube' in statement:
+        elif 'youtube' in query:
             url="https://www.youtube.com"
             stopwords = ['play', 'youtube', 'in', 'on', 'at','open','search']
-            querywords = statement.split()
+            querywords = query.split()
             
             resultwords = [word for word in querywords if word.lower() not in stopwords]
             result = ' '.join(resultwords)
@@ -350,10 +350,10 @@ if __name__ == "__main__":
                 speak("youtube is open now")
             time.sleep(5)
 
-       elif 'google' in statement:
+        elif 'google' in query:
             url = "https://www.google.com"
             stopwords = ['in', 'open', 'search','google']
-            querywords = statement.split()
+            querywords = query.split()
 
             resultwords = [word for word in querywords if word.lower() not in stopwords]
             result = ' '.join(resultwords)
@@ -480,7 +480,7 @@ if __name__ == "__main__":
             speak("searching web")
             webbrowser.open("https://myaccount.google.com/find-your-phone?pli=1")
             
-        elif 'who are you' in statement or 'what can you do' in statement:
+        elif 'who are you' in query or 'what can you do' in query:
             speak('I am Coddie your persoanl assistant. I am programmed to perform minor tasks like'
                   'opening youtube,google chrome,gmail and stackoverflow ,predict time,take a photo,search wikipedia,predict weather' 
                   'in different cities , get top headline news from times of india and you can ask me computational or geographical questions too!')
