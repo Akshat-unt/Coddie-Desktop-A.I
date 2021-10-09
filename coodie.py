@@ -309,18 +309,64 @@ if __name__ == "__main__":
         elif "open avm factory" in query:
             speak("opening youtube")
             webbrowser.open("https://www.youtube.com/channel/UCrUSrxPz80KKD675XBFemcA")
-
+                      
         elif "open my website" in query:
             print("opening website")
             webbrowser.open("akshat-unt.github.io")
+            
+        elif 'netflix' in query:
+            url = "https://www.netflix.com/"
+            stopwords = ['in', 'open', 'search','netflix']
+            querywords = query.split()
 
-        elif "open youtube" in query:
-            speak("opening youtube")
-            webbrowser.open("youtube.com")
+            resultwords = [word for word in querywords if word.lower() not in stopwords]
+            result = ' '.join(resultwords)
+            
+            if result:
+                 domain = result
+                 url = 'https://www.netflix.com/search?q=' + domain
+                 webbrowser.open_new_tab(url)
+            if result:
+                 speak("searching" + domain + "in netflix")
+            else:
+                 speak("Netflix is open now")
+                 time.sleep(5)
+        
+        elif 'youtube' in query:
+            url="https://www.youtube.com"
+            stopwords = ['play', 'youtube', 'in', 'on', 'at','open','search']
+            querywords = query.split()
+            
+            resultwords = [word for word in querywords if word.lower() not in stopwords]
+            result = ' '.join(resultwords)
 
-        elif "open google" in query:
-            speak("opening google")
-            webbrowser.open("google.com")
+            if result:
+                domain = result
+                url = 'https://www.youtube.com/results?search_query=' + domain
+            webbrowser.open_new_tab(url)
+            if result:
+                speak("searching"+domain+"in youtube")
+            else:
+                speak("youtube is open now")
+            time.sleep(5)
+
+        elif 'google' in query:
+            url = "https://www.google.com"
+            stopwords = ['in', 'open', 'search','google']
+            querywords = query.split()
+
+            resultwords = [word for word in querywords if word.lower() not in stopwords]
+            result = ' '.join(resultwords)
+            
+            if result:
+                domain = result
+                url = 'https://www.google.com/search?q=' + domain
+            webbrowser.open_new_tab(url)
+            if result:
+                speak("searching" + domain + "in google")
+            else:
+                speak("Google chrome is open now")
+            time.sleep(5)
 
         elif "open stackoverflow" in query:
             speak("opening stackoverflow")
@@ -433,7 +479,12 @@ if __name__ == "__main__":
             print("searching web...")
             speak("searching web")
             webbrowser.open("https://myaccount.google.com/find-your-phone?pli=1")
-
+            
+        elif 'who are you' in query or 'what can you do' in query:
+            speak('I am Coddie your persoanl assistant. I am programmed to perform minor tasks like'
+                  'opening youtube,google chrome,gmail and stackoverflow ,predict time,take a photo,search wikipedia,predict weather' 
+                  'in different cities , get top headline news from times of india and you can ask me computational or geographical questions too!')
+            
         # --------------------> TURN OFF THE PC <-----------------------------------------------------------
 
         elif "log off" in query or "sign out" in query:
