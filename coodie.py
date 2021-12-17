@@ -43,17 +43,13 @@ def user_authorisation():
         auth_key = "*@&^"
         speak("Enter your authorisation key")
         key = str(input("Enter your AUTHORISATION KEY: "))
-        if key == auth_key:
-            pass
-        else:
+        if key != auth_key:
             speak("found vulnerabilities")
             speak("incorrect pin, breaking the code flow, initialising syren, deleting credentials, sending SMS to author, initialising system lock")
             playsound("G:\\Program files\\Python\\ORGANIZED\\alarm\\alarm_dubstep.mp3")
             pyautogui.keyDown("win")
             pyautogui.press("l")
             pyautogui.keyUp("win")
-    else:
-        pass
 user_authorisation()
 
 # NOTICE:

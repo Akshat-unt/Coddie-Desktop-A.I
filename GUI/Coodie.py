@@ -135,7 +135,7 @@ def play():
             var.set('Hello Sir')
             window.update()
             speak("Hello Sir")
-			
+
         elif 'open stackoverflow' in query:
             var.set('opening stackoverflow')
             window.update()
@@ -231,7 +231,7 @@ def play():
                 var.set("Sorry Sir! I was not able to send this email")
                 window.update()
                 speak('Sorry Sir! I was not able to send this email')
-		
+
         elif "open python" in query:
             var.set("Opening Python Ide")
             window.update()
@@ -275,7 +275,7 @@ def play():
                     else:
                         digit = 0
                     sum += digit
-        
+
         elif 'enter student details' in query:
             s = Student()
             var.set('name of the student')
@@ -310,16 +310,14 @@ def play():
         elif 'record video' in query:
             cap = cv2.VideoCapture(0)
             out = cv2.VideoWriter('output.avi', -1, 20.0, (640,480))
-            while(cap.isOpened()):
+            while (cap.isOpened()):
                 ret, frame = cap.read()
-                if ret:
-                    
-                    out.write(frame)
+                if not ret:
+                    break
+                out.write(frame)
 
-                    cv2.imshow('frame',frame)
-                    if cv2.waitKey(1) & 0xFF == ord('q'):
-                        break
-                else:
+                cv2.imshow('frame',frame)
+                if cv2.waitKey(1) & 0xFF == ord('q'):
                     break
             cap.release()
             out.release()
